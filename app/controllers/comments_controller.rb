@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-
+  before_action :is_an_authorized_user, only: [:create, :update]
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
@@ -57,9 +57,18 @@ class CommentsController < ApplicationController
     end
   end
 
+
+  def is_an_authorized_user
+    @photo = Photo.find(params.fetch(:comment).fetch(:photo_id))
+    if current_user != @photo.owner && @photo.owner.private? && !current_user.leaders.include?(@photo.owner)
+     redirect_back fallback_location: root_url, notice: "Not this time"
+    end
+  end
+ 
+ 
+  # Use callbacks to share common setup or constraints between actions.
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
+  def set_comment
       @comment = Comment.find(params[:id])
     end
 
