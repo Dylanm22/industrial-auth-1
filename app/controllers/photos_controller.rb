@@ -9,7 +9,6 @@ class PhotosController < ApplicationController
 
   # GET /photos/1 or /photos/1.json
   def show
-  # authorize @photo
   end
 
   # GET /photos/new

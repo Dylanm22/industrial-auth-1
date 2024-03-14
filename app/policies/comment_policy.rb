@@ -3,14 +3,14 @@ class CommentPolicy < ApplicationPolicy
 
   def initialize(user, comment)
     @user = user
-   @comment = comment
+    @comment = comment
   end
  def create?
       true
  end
 
   def update?
-    user == comment.owner
+    user == comment.author
   end
 
   def edit?
