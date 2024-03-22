@@ -16,7 +16,7 @@ class FollowRequestPolicy < ApplicationPolicy
         follow_request.recipient
   end
   
-  def destory?
+  def destroy?
    update?
   end
 end
