@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_like, only: %i[ show edit update destroy ]
-
+  before_action {authorize (@likes || Like)}
   # GET /likes or /likes.json
   def index
     @likes = Like.all
