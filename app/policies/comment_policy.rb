@@ -17,8 +17,8 @@ class CommentPolicy < ApplicationPolicy
     update?
   end
 
-  def destory?
-    update?
+  def destroy?
+  user == comment.author
   end
 
 end

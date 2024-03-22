@@ -3,7 +3,7 @@ class FollowRequestsController < ApplicationController
   before_action {authorize (@follow_request || FollowRequest)}
   # GET /follow_requests or /follow_requests.json
   def index
-    @follow_request = FollowRequest.all
+    @follow_requests = FollowRequest.all
   end
 
   # GET /follow_requests/1 or /follow_requests/1.json
